@@ -6,5 +6,16 @@ Infoscale
     |
 Operating System
 
+
 Infoscale :- 
+
+           Application
+                |
+           Veritas cluster services
+                |
+           Veritas volume manager
+                |
+           DMP
+
+
 
