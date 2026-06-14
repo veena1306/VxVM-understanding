@@ -1,1 +1,18 @@
+1. The purpose of VxVM is to enhance the ability of system administrators to effectively manage the disk storage of any
+   computer system.
+   -> Physical objects
+   -> Virtual objects
+
+2. Volume manager is below application/file system and above physical disk storage.
+3. Application level user operates on volume through system call interface.
+4. File systems, Database(s) or other kernel component operate on volume through block and character devices.
+
+VxVM Volume -> plex -> subdisk ->(Physical disks)
+
+VxVM Volume :- 
+VxVM volume are basically virtual disk devices that gives illusion to the application/user that they are physical
+formatted disks.
+Physical objects -> it is essentially physical disks and their partitions.Partitions are created on physical disks.
+They are already available at the time of installations.
+
 
