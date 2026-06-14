@@ -15,4 +15,10 @@ formatted disks.
 Physical objects -> it is essentially physical disks and their partitions.Partitions are created on physical disks.
 They are already available at the time of installations.
 
-
+FSS :- 
+Flexible Storage Sharing (FSS) is an InfoScale feature that allows cluster nodes to access shared storage even when
+they do not have direct visibility to the SAN LUNs. In a traditional CVM/CFS environment, every node must be zoned and 
+presented with the same storage. With FSS, only a subset of nodes, called storage nodes, require direct storage access. 
+Other nodes access the storage through the cluster. This reduces SAN complexity, lowers infrastructure costs,
+and is especially useful in cloud and virtualized environments where shared storage visibility may not be available on every 
+node. FSS provides the benefits of clustered storage while requiring fewer direct storage connections.
