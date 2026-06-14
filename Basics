@@ -13,9 +13,11 @@ Infoscale :-
                 |
            Veritas cluster services
                 |
+           V File system
+                |
            Veritas volume manager
                 |
-           DMP
+               DMP
 
 
 
