@@ -19,5 +19,57 @@ Infoscale :-
                 |
                DMP
 
+Veritas volume cluster :- It is a high availabilty clustering solution that monitors application and automatically restarts
+them on another server if the current server fails.
+Main motive is to Minimize application downtime and eliminate single points of failure.
+
+ex:- 
+Imagine you have a production Oracle database running on two servers:
+Node1 (Active)
+Node2 (Standby)
+
+           Client
+              |
+              V
+         Virtual IP
+              |
+              V
+          Node1
+      Oracle Database
+
+Node2 continuously monitors Node1 through cluster heartbeats.
+
+Suppose Node1 crashes due to a hardware issue:
+Node1  --> DOWN
+
+VCS detects:
+Server failure
+Application failure
+
+It performs:-
+1. Import disk group
+2. Mount filesystem
+3. Start listener
+4. Start Oracle database
+5. Bring up virtual IP
+
+           Client
+              |
+              V
+         Virtual IP
+              |
+              V
+          Node2
+      Oracle Database
+
+###Main VCS Components:-
+1. HAD (High availabilty daemon)
+Responsibilities:
+  Monitors resources
+  Detects failures
+  Performs failover
+
+2. 
+
 
 
