@@ -69,7 +69,56 @@ Responsibilities:
   Detects failures
   Performs failover
 
-2. 
+2. LLT (Low Latency Transport)
+Provides heartbeat communication between cluster nodes.
+If heartbeat stops, VCS suspects a node failure.
+lltstat -nvv
+
+3. GAB (Group Membership Service)
+Tracks cluster membership.
+Determines:
+Which nodes are alive?
+Which nodes left the cluster?
+gabconfig -a
+
+Q: What does 'Node1 loses heartbeat with Node2' mean?
+Node1 loses heartbeat
+Node2 loses heartbeat
+It does not necessarily mean both servers are down.
+It means the cluster communication between the nodes has been interrupted.
+Heartbeat loss means cluster nodes can no longer communicate through the LLT heartbeat network. The nodes themselves
+may still be running, but each node may assume the other has failed. This can lead to a split-brain condition where 
+multiple nodes try to access the same shared resources.
+VCS uses I/O fencing and coordinator disks to ensure only one node retains access to shared storage and continues 
+providing services.
 
 
+4. I/O Fencing
+Protects shared storage from split-brain situations.
+Node1 loses heartbeat
+Node2 loses heartbeat
+
+Both nodes might think they are active.
+Data corruption
+
+I/O fencing ensures only one node can access shared storage.
+
+What Does VCS Monitor?
+VCS monitors resources such as:
+Disk Groups
+Volumes
+Filesystems
+Virtual IPs
+Oracle Databases
+Listeners
+Applications
+NFS Services
+Mount Points
+
+Interview Answer (2-Minute Version)
+VCS is a high-availability clustering solution from Veritas that monitors applications, storage, network resources,
+and servers. It uses LLT and GAB for cluster communication and HAD as the cluster engine. If a node or application fails,
+VCS automatically fails over the service group to another node. For example, if an Oracle database running on Node1 crashes,
+VCS imports the disk group, mounts the filesystem, brings up the virtual IP, and starts Oracle on Node2,
+minimizing downtime. I/O fencing is used to prevent split-brain and protect shared storage from corruption.
 
